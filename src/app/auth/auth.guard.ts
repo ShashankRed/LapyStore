@@ -26,7 +26,7 @@ export class AuthGuard implements CanActivate {
     return false;
   }
   private isLoginOrRegister(): boolean {
-    if (this.url.includes('/auth/login') || this.url.includes('/auth/register')) {
+    if (this.url.includes('/auth/login') || this.url.includes('/auth/register') || this.url.includes('auth/userlogin') || this.url.includes('/products')){
       return true;
     }
     return false;
@@ -35,7 +35,7 @@ export class AuthGuard implements CanActivate {
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
     this.url = state.url;
     if (this.auth.isAuthenticated()) {
-     return this.authState();
+      return this.authState();
     }
     return this.notAuthState();
   }

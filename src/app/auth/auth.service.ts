@@ -36,6 +36,13 @@ export class AuthService {
     }));
   }
 
+  public userlogin(userData: any): Observable<any> {
+    const URI = this.uriseg + '/userlogin';
+    return this.http.post(URI, userData).pipe(map(token => {
+      return this.saveToken(token);
+    }));
+  }
+
   private saveToken(token: any): any {
     this.decodedToken = jwt.decodeToken(token);
     localStorage.setItem('auth_tkn', token);
@@ -51,7 +58,21 @@ export class AuthService {
   }
 
   public isAuthenticated(): boolean {
-    return moment().isBefore(moment.unix(this.decodedToken.exp));
+    if(this.getUsername()=="xyz@gmail.com"){
+      return moment().isBefore(moment.unix(this.decodedToken.exp));
+    } else {
+      return null;
+    }
+  }
+
+  public isRegular(): boolean {
+    if(this.getUsername()!="xyz@gmail.com"){
+      return moment().isBefore(moment.unix(this.decodedToken.exp));
+    }
+  }
+
+  public isShowProducts(): boolean {
+      return moment().isBefore(moment.unix(this.decodedToken.exp));
   }
 
   public getUsername(): string {

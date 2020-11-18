@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
+const { schema } = require('./company');
 const Schema = mongoose.Schema
 
 const userSchema = new Schema({
@@ -55,3 +56,4 @@ userSchema.methods.hasSamePassword = function (password) {
 }
 
 module.exports = mongoose.model('User', userSchema)
+

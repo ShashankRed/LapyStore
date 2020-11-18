@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from './../auth.service';
+import { AuthService } from '../auth.service';
+
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-userlogin',
+  templateUrl: './userlogin.component.html',
+  styleUrls: ['./userlogin.component.css']
 })
-export class LoginComponent implements OnInit {
+export class UserloginComponent implements OnInit {
 
   loginForm: FormGroup;
   errors: any = [];
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(private auth: AuthService, private router: Router, private fb: FormBuilder, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
     this.initForm();
     this.route.queryParams.subscribe((params) => {
       const key1 = 'registered';
@@ -25,7 +27,7 @@ export class LoginComponent implements OnInit {
         this.notify = 'You have been successfully registered. Please Log in';
       }
       if (params[key2] === 'success') {
-        this.notify = 'You have been logged out successfully';
+        this.notify = 'You have been loggedout successfully';
       }
     });
   }
@@ -53,4 +55,5 @@ export class LoginComponent implements OnInit {
           this.errors.push(errorResponse.error.error);
         });
   }
+
 }

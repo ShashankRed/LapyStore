@@ -11,6 +11,12 @@ import { ProfileComponent } from './profile/profile.component';
 import { AuthModule } from './auth/auth.module';
 import { ServicesComponent } from './services/services.component';
 import { CompaniesListComponent } from './companies-list/companies-list.component';
+import { UserloginComponent } from './auth/userlogin/userlogin.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CartComponent } from './cart/cart.component';
+import { ProductComponent } from './product/product.component';
+import { ProductService } from './ProductService';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,14 +25,17 @@ import { CompaniesListComponent } from './companies-list/companies-list.componen
     HomeComponent,
     ProfileComponent,
     ServicesComponent,
-    CompaniesListComponent
+    CompaniesListComponent,
+    UserloginComponent,
+    CartComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    AuthModule
+    AppRoutingModule, ReactiveFormsModule,
+    AuthModule, FormsModule,HttpClientModule
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

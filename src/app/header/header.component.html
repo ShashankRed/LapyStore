@@ -1,12 +1,13 @@
-<nav class="navbar navbar-light navbar-expand-lg" style="background-color: #e3f2fd;">
+<nav class="navbar navbar-light navbar-expand-lg" style="background-color: orange">
   <div class="container">
-    <a routerLink="/" class="navbar-brand" routerLinkActive="active">Admin Portal</a>
+    <a routerLink="/" class="navbar-brand" routerLinkActive="active">Laptop Store</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-        <ng-container *ngIf="!auth.isAuthenticated()">
+
+        <ng-container *ngIf="!auth.isAuthenticated() && !auth.isRegular()">
           <li class="nav-item">
-            <a routerLink="/auth/login" class="nav-link" routerLinkActive="active">
-              Login
+            <a routerLink="/auth/userlogin" class="nav-link" routerLinkActive="active">
+              User
             </a>
           </li>
           <li class="nav-item">
@@ -14,14 +15,33 @@
               Register
             </a>
           </li>
+          <li class="nav-item">
+            <a routerLink="/auth/login" class="nav-link" routerLinkActive="active">
+             Admin
+            </a>
+          </li>
+         
         </ng-container>
         <ng-container *ngIf="auth.isAuthenticated()">
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['/companies-list']">Manage Companies</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/services']">Services</a>
+            <a class="nav-link" [routerLink]="['/services']">Manage Products</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link">
+              {{ auth.getUsername() }}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link pointer" (click)="logout()">
+              Logout
+            </a>
+          </li>
+        </ng-container>
+
+        <ng-container *ngIf="auth.isRegular()">
           <li class="nav-item">
             <a class="nav-link">
               {{ auth.getUsername() }}
@@ -37,3 +57,5 @@
     </div>
   </div>
 </nav>
+
+

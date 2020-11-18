@@ -1,1 +1,70 @@
-<p>services works!</p>
+<div  align="center"><br>
+    <h2 align="center">ADD/UPDATE PRODUCTS</h2><br>
+
+    <form [formGroup]="productRef"  (ngSubmit)="onSubmit(buttonType)">
+        <label>Product Identity :-</label>
+        <input type="text"  formControlName="_id" /><br/><br>
+        <label>Product Name :-</label>
+        <input type="text"  formControlName="name" required /><br/><br>
+        <label>Product Price :-</label>
+        <input type="text" formControlName="price"/><br/><br>
+        <label>Product photo :-</label>
+        <input type="text" formControlName="photo"/><br/><br>
+        <label for="laptops">Product photo :-</label>
+        
+        <select id="laptops" name="laptops"> 
+          <option value="apple">Apple</option>
+          <option value="HP">HP</option>
+          <option value="acer">Acer</option>
+          <option value="Lenovo">lenovo</option>
+        </select><br><br>
+        
+        <input type="submit" value="Store Product" (click)="onSubmit('Next')" /> || <input type="submit" value="Update Product" (click)="onSubmit('Previous')"/>
+    </form> 
+    <!-- {{result}} -->
+</div><br>
+
+
+<div align="center">
+        <label> Delete Product Id : </label>
+        <input type="text" #prodId /><br/>
+        <input type="button" value="Delete" (click)="deleteProduct(prodId.value)" />
+</div>
+<h1 align="center" style="color:Tomato;"> {{result}}</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div><br>
+    <h2 align="center">ADD/UPDATE PRODUCTS</h2><br>
+    <form align="center">
+        Product ID: <input type="text" name="_id" /><br><br>
+
+        Product Name: <input type="text" name="name"><br><br>
+
+        Product Price: <input type="text" name="price"><br><br>
+
+        Product Image: <input type="text" name="photo"><br><br>
+
+        Laptop Company/Brand : <label for="laptops"></label> 
+        <select id="laptops" name="laptops">
+          <option value="apple">Apple</option>
+          <option value="HP">HP</option>
+          <option value="acer">Acer</option>
+          <option value="Lenovo">lenovo</option>
+        </select><br><br>
+
+        <input type="button" value="ADD">  |  <input type="button" value="UPDATE">
+    </form>
+    (click)="deleteProduct(prodId.value)
+</div> -->

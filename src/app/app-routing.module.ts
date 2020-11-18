@@ -8,12 +8,18 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth/auth.guard';
 import { ServicesComponent } from './services/services.component';
 import { CompaniesListComponent } from './companies-list/companies-list.component';
+import { ProductComponent } from './product/product.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
+
   { path: '', component: HomeComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'services', component: ServicesComponent, canActivate: [AuthGuard] },
-  { path: 'companies-list', component: CompaniesListComponent, canActivate: [AuthGuard] }
+  { path: 'companies-list', component: CompaniesListComponent, canActivate: [AuthGuard] },
+  
+	{ path: 'products', component: ProductComponent },
+	{ path: 'cart', component: CartComponent },
 ];
 
 @NgModule({

@@ -13,6 +13,9 @@ mongoose.set('useUnifiedTopology', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 
+// var url = "mongodb://localhost:27017/demodatabase";
+// mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }); // db connct avoid warning
+
 mongoose.connect(config.DB).then(
   () => { console.log('Database is connected') },
   err => { console.log('Can not connect to the database' + err) }

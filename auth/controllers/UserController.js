@@ -1,6 +1,10 @@
+var mongoose = require('mongoose');
 const User = require('../models/User')
+
 const env = require('../DB')
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const { Mongoose } = require('mongoose');
+const { json } = require('body-parser');
 
 exports.register = function (req, res) {
 
@@ -38,7 +42,6 @@ exports.register = function (req, res) {
 }
 exports.login = function (req, res) {
   const { email, password } = req.body
-
   if (!email || !password) {
     return res.status(422).json({ 'error': 'Please provide email or password' })
   }
@@ -48,7 +51,6 @@ exports.login = function (req, res) {
         'error': 'Oops! Something went wrong'
       })
     }
-
     if (!user) {
       return res.status(422).json({ 'error': 'Invalid user' })
     }
@@ -104,3 +106,4 @@ exports.authMiddleware = function (req, res, next) {
 function parseToken(token) {
   return jwt.verify(token.split(' ')[1], env.secret)
 }
+

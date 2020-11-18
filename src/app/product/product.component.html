@@ -1,0 +1,23 @@
+<ng-container *ngIf="auth.isShowProducts()">
+    <h3 align="center">PRODUCT LIST</h3>
+    <table align="center" border="2" bordercolor="orange"  height="800" width="800">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Photo</th>
+            <th>Buy</th>
+        </tr>
+        <tr *ngFor="let product of products">
+            <td>{{product._id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>
+            <td style="height:250px;width:80px">
+                <img src="assets/images/{{product.photo}}" width="200" height="150">
+            </td>
+            <td>
+                <a [routerLink]="['/cart', { id:product._id }]">Buy Now</a>
+            </td>
+        </tr>
+    </table>
+</ng-container>
